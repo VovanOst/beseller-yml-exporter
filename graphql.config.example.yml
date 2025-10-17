@@ -1,0 +1,8 @@
+schema:
+  - schema.graphql
+documents:
+  - internal/infrastructure/graphql/**/*.graphql
+extensions:
+  endpoints:
+    default:
+      url: ${GRAPHQL_ENDPOINT}
