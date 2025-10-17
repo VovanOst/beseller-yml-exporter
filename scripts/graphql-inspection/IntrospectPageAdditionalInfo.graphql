@@ -1,0 +1,12 @@
+query IntrospectPageAdditionalInfo {
+    __type(name: "PageAdditionalInfo") {
+        fields {
+            name
+            type {
+                kind
+                name
+                ofType { kind name }
+            }
+        }
+    }
+}

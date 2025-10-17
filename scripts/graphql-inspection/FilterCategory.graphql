@@ -1,0 +1,6 @@
+query FilterCategory {
+    filterCategory {
+        id
+        name
+    }
+}

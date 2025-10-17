@@ -1,0 +1,7 @@
+query IntrospectPageImage {
+    __type(name: "PageImage") {
+        fields {
+            name
+        }
+    }
+}

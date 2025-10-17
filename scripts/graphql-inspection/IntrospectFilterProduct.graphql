@@ -1,0 +1,17 @@
+query IntrospectProductType {
+    __type(name: "Product") {
+        name
+        kind
+        fields {
+            name
+            type {
+                kind
+                name
+                ofType {
+                    kind
+                    name
+                }
+            }
+        }
+    }
+}

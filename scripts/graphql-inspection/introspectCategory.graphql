@@ -1,0 +1,12 @@
+query IntrospectCategory {
+    __type(name: "Category") {
+        fields {
+            name
+            type {
+                kind
+                name
+                ofType { kind name }
+            }
+        }
+    }
+}

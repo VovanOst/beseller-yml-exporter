@@ -1,0 +1,51 @@
+query FilterProduct($first: Int, $offset: Int, $filter: ProductFilter) {
+    filterProduct(first: $first, offset: $offset, filter: $filter) {
+        id
+        name
+        statusId
+        page {
+            url
+            links{parentUrl}
+        }
+        category {
+            id
+            name
+            page {
+                url
+            }
+            parentCategory {
+                id
+                name
+                page {
+                    url
+                }
+                parentCategory {
+                    id
+                    name
+                    page {
+                        url
+                    }
+                    parentCategory {
+                        id
+                        name
+                        page {
+                            url
+                        }
+                    }
+                }
+            }
+        }
+        price
+        priceToShow {     # объект Price, содержащий currency
+            name
+            value
+            suffix
+        }
+
+        images {
+            image
+        }
+        vendorCode
+        itemCode
+    }
+}

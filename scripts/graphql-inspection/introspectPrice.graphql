@@ -1,0 +1,8 @@
+query IntrospectPrice {
+    __type(name: "Price") {
+        fields {
+            name
+            type { name kind ofType { name kind } }
+        }
+    }
+}

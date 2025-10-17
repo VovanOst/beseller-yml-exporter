@@ -1,0 +1,2186 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+interface FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    position: Int!
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+}
+
+type B2bCategory {
+    added: Int
+    autoimport: Int
+    providerCategoryId: String
+    providerId: Int
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+type B2bMarkup {
+    id: Int
+    priceFrom: Float
+    providerId: Int
+    type: String
+    value: Float
+}
+
+type B2bProduct {
+    added: Int
+    providerId: Int
+    providerProductId: String
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+type B2bSettings {
+    allowGroups: Int
+    autoDelete: Int
+    availableCount: Int
+    createGroups: Int
+    lastImport: LastImport
+    markup: [B2bMarkup]
+    provider: String
+    providerId: Int
+    providerModuleId: Int
+    providerName: String
+    run: Int
+    status: Int
+    syncDate(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    syncFields: String
+}
+
+type BankCurrency {
+    code: String
+    course: Float
+    description: String
+    id: Int
+    status: Boolean
+}
+
+type Banner {
+    active: Boolean!
+    content: String!
+    description: String!
+    id: Int!
+    outputSource: Int!
+    position: Int!
+    slider(status: Boolean): Slider
+    type: BannerType!
+}
+
+type CalcOrder {
+    deliveries: [OrderDeliveryCalc]
+    discountCodes: DiscountCodes
+    payments: [OrderPaymentCalc]
+    productPrices: [Price]
+    products: [OrderProductCalc]
+    total: [Price]
+    userId: Int
+}
+
+type Category {
+    additionalInfo: CategoryAdditionalInfo
+    childCategories: [Category]
+    childCategoriesCount: Int!
+    filterFields: [FieldInterface]
+    floatValues: [FloatFieldValue]
+    id: Int
+    images: [PageImage]
+    intValues: [IntFieldValue]
+    itemCode: String
+    name: String
+    open: Int
+    page: Page
+    pageId: Int
+    parentCategory: Category
+    priceRange: PriceCategoryRange
+    productCount(filter: CategoryFilter): Int
+    products: [Product]
+    productsMain(ignoreModifications: Boolean): [Product]
+    selectValues: [SelectFieldValue]
+    showMain: Boolean
+    statusId: Int
+    stringValues: [StringFieldValue]
+    textValues: [TextFieldValue]
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+}
+
+type CategoryAdditionalInfo {
+    categoryId: Int
+    description: String
+    filterGroupId: Int
+    fullDescription: String
+    fullName: String
+}
+
+type Currency {
+    bankCurrencyId: Int!
+    course: Float!
+    id: Int!
+    isBase: Boolean!
+    isInput: Boolean!
+    isShow: Boolean!
+    round: Float!
+    suffix: String!
+}
+
+type CustomGeo {
+    active: Int
+    id: Int
+    name: String
+}
+
+type DeliveryType {
+    description: String
+    id: Int
+    name: String
+    status: Boolean
+}
+
+type DiscountCodes {
+    code: String
+    comment: String
+    condition: DiscountCodesCondition
+    discount: Float
+    discountType: DiscountCodesDiscountType
+    id: Int
+    name: String
+    status: Boolean
+    uses: Int
+}
+
+type DiscountCodesAccessType {
+    id: Int
+    name: String
+    title: String
+}
+
+type DiscountCodesCondition {
+    accesType: DiscountCodesAccessType
+    allProducts: Boolean
+    countFrom: Int
+    countUses: Int
+    dateFrom(format: String = "YYYY-MM-dd"): String
+    dateTo(format: String = "YYYY-MM-dd"): String
+    pageIds: [DiscountCodesPages]!
+    priceFrom: Float
+    productDiscount: Boolean
+}
+
+type DiscountCodesDiscountType {
+    id: Int
+    title: String
+}
+
+type DiscountCodesPages {
+    pageId: Int
+    pageType: Int
+    parentPageId: Int
+}
+
+type FieldOption {
+    fieldId: Int
+    id: Int
+    position: Int
+    type: Int
+    value: String
+}
+
+type FieldType {
+    description: String
+    id: Int
+    name: String
+}
+
+type FloatField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    position: Int!
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    value: FloatFieldValue
+}
+
+type FloatFieldValue {
+    fieldId: Int!
+    floatValue: Float!
+    id: Int!
+    pageId: Int!
+}
+
+type Group {
+    fields: [FieldInterface]
+    filledFields: [FieldInterface]
+    filteredFields: [FieldInterface]
+    id: Int!
+    name: String
+    products(filter: ProductFilter, first: Int, offset: Int, order: [OrderByInput]): [Product]
+    searchFields: [FieldInterface]
+    typeId: Int!
+}
+
+type GroupPurpose {
+    description: String!
+    id: Int!
+    name: String!
+}
+
+type Icon {
+    commonImage: String
+    hint: String
+    imageSelectedOption: Int
+    link: String
+    ownImage: String
+    position: Int!
+    status: Boolean!
+}
+
+type InnerProduct {
+    additionalInfo: ProductAdditionalInfo
+    count: Int
+    countable: Boolean
+    deliveryDays: Int
+    discountPercent: Float
+    floatValues: [FloatFieldValue]
+    id: Int
+    images: [PageImage]
+    intValues: [IntFieldValue]
+    itemCode: String
+    name: String
+    oldPrice: Float
+    oldPriceFrom(format: String = "YYYY-MM-dd"): String
+    oldPriceTo(format: String = "YYYY-MM-dd"): String
+    oldPriceToShow: [Price]
+    onlinerClassification: OnlinerClassification
+    orderMinCount: Int
+    page: Page
+    pageId: Int
+    price: Float
+    priceFrom: Boolean
+    priceToShow: [Price]
+    reviewSummary: ReviewSummary
+    reviews: [Review]
+    selectValues: [SelectFieldValue]
+    shopByClassification: ShopbyClassification
+    shopByTypeValues: [ShopByTypeValue]
+    sizeType: SizeType
+    statusId: Int
+    stringValues: [StringFieldValue]
+    tags: [ProductTag]
+    textValues: [TextFieldValue]
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    vendorCode: String
+}
+
+type IntField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    position: Int!
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    value: IntFieldValue
+}
+
+type IntFieldValue {
+    fieldId: Int!
+    id: Int!
+    intValue: Int!
+    pageId: Int!
+}
+
+type LastImport {
+    added: Int!
+    createdAt(format: String = "YYYY-MM-dd HH:mm:ss"): String!
+    deleted: Int!
+    error: String
+    id: Int
+    providerId: Int!
+    report: String
+    updated: Int!
+}
+
+type ModificationProductSettings {
+    fieldId: Int!
+    optionId: Int!
+}
+
+type ModificationProductType {
+    fieldId: Int!
+    optionId: Int!
+    parentId: Int!
+    productId: Int!
+}
+
+type ModificationProductVariant {
+    settings: [ModificationProductSettings]
+    url: String!
+}
+
+type ModificationSettings {
+    fieldId: Int!
+    id: Int!
+    options: [ModificationSettingsOptions]
+    position: Int
+    productId: Int!
+    showType: Int!
+    title: String!
+}
+
+type ModificationSettingsOptions {
+    fieldId: Int!
+    id: Int!
+    position: Int
+    selected: Boolean
+    type: Int
+    value: String!
+}
+
+type ModificationSettingsShowType {
+    descriptions: String!
+    id: Int!
+    name: String!
+}
+
+type ModificationSettingsShowTypes {
+    types: [ModificationSettingsShowType]
+}
+
+type MultiSelectField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    options: [FieldOption]
+    position: Int!
+    purposeId: Int
+    searchOptions: [FieldOption]
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    values: [SelectFieldValue]
+}
+
+type Mutation {
+    addB2bImport(item: LastImportInput!): Int!
+    addBanner(item: BannerInput!): Int!
+    addCategory(items: [CategoryInput]): [Category]
+    addDiscountCodes(items: DiscountCodesInput): [DiscountCodes]
+    addFieldOption(items: [AddFieldOptionInput]): [FieldOption]
+    addFloatFieldValue(items: [AddFloatFieldValue]): [FloatFieldValue]
+    addGeo(items: [CustomGeoInsert]): [CustomGeo]
+    addGroup(items: [AddGroupInput]): [Group]
+    addGroupField(items: [AddGroupFieldInput]): [FieldInterface]
+    addIntFieldValue(items: [AddIntFieldValue]): [IntFieldValue]
+    addLink(items: [AddLinkInput]): [PageAdditionalInfo]
+    addModificationSettings(items: ModificationSettingsInput): [ModificationSettings]
+    addOnlinerClassification(items: [OnlinerInput]): [OnlinerClassification]
+    addOrder(items: [OrderInput]): [Order]
+    addPageImage(items: [ImageInput]): [PageImage]
+    addPageMetaTag(items: [MetaTagInput]): [PageMetaTag]
+    addProduct(items: [ProductInput]): [Product]
+    addProductModification(items: ModificationProductInput): ModificationProductType
+    addProductTag(items: [ProductTagAddInput]): [ProductTag]
+    addRelatedPage(items: [RelatedInput]): [RelatedPage]
+    addReview(items: [AddReviewInput]): [Review]
+    addSelectFieldValue(items: [AddSelectFieldValue]): [SelectFieldValue]
+    addShopByClassification(items: [ShopbyClassificationInput]): [ShopbyClassification]
+    addShopByTypeValue(items: [ShopByTypeValueInput]): [ShopByTypeValue]
+    addShopReview(items: [ShopReviewInput]): [ShopReview]
+    addSlider(item: SliderInput!): Int!
+    addStringFieldValue(items: [AddStringFieldValue]): [StringFieldValue]
+    addSubscriber(items: [AddSubscriber]): [Subscriber]
+    addTextFieldValue(items: [AddTextFieldValue]): [TextFieldValue]
+    addToProductOldPrice(ids: [Int!]!, value: Float!): Int
+    addToProductPrice(ids: [Int!]!, value: Float!): Int
+    addToProductTags(ids: [Int!]!, tagIds: [Int!]!): Int
+    appendToCategoryDescription(ids: [Int!]!, value: String!): Int
+    appendToCategoryFullDescription(ids: [Int!]!, value: String!): Int
+    appendToCategoryFullName(ids: [Int!]!, value: String!): Int
+    appendToCategoryItemCode(ids: [Int!]!, value: String!): Int
+    appendToCategoryName(ids: [Int!]!, value: String!): Int
+    appendToProductDescription(ids: [Int!]!, value: String!): Int
+    appendToProductFullDescription(ids: [Int!]!, value: String!): Int
+    appendToProductFullName(ids: [Int!]!, value: String!): Int
+    appendToProductItemCode(ids: [Int!]!, value: String!): Int
+    appendToProductName(ids: [Int!]!, value: String!): Int
+    checkTodayProductSaleDates: Int!
+    clearCache(cacheType: CacheTypeEnum): Int!
+    delToProductTags(ids: [Int!]!, tagIds: [Int!]!): Int
+    deleteBanner(id: Int!): Int!
+    deleteCategory(ids: [Int!]!): Int!
+    deleteDiscountCodes(ids: [Int!]!): Int!
+    deleteFieldOption(ids: [Int!]!): Int!
+    deleteFieldValue(pageIds: [Int!]!): Int!
+    deleteFloatFieldValue(ids: [Int!]!): Int!
+    deleteGeo(ids: [Int!]!): Int!
+    deleteGroup(ids: [Int!]!): Int!
+    deleteGroupField(ids: [Int!]!): Int!
+    deleteIntFieldValue(ids: [Int!]!): Int!
+    deleteLink(ids: [Int!]!): Int!
+    deleteOnlinerClassification(productIds: [Int!]!): Int!
+    deleteOrder(ids: [Int!]!): Int!
+    deletePageImage(ids: [Int!]!): Int!
+    deletePageMetaTag(ids: [Int!]!): Int!
+    deleteProduct(ids: [Int!]!): Int!
+    deleteProductB2b(providerId: Int, vendorCode: [String]): Int!
+    deleteProductTag(ids: [Int!]!): Int!
+    deleteRelatedPage(ids: [Int!]!): Int!
+    deleteReview(ids: [Int!]!): Int!
+    deleteSelectFieldValue(ids: [Int!]!): Int!
+    deleteShopByClassification(productIds: [Int!]!): Int!
+    deleteShopByTypeValue(productIds: [Int!]!): Int!
+    deleteShopReview(ids: [Int!]!): Int!
+    deleteSlider(id: Int!): Int!
+    deleteStringFieldValue(ids: [Int!]!): Int!
+    deleteSubscriber(ids: [Int!]!): Int!
+    deleteTextFieldValue(ids: [Int!]!): Int!
+    deleteUnusedGroupFields: Int!
+    editOrder(items: [OrderInputEdit]): [Order]
+    fullDeleteB2bProducts(providerId: Int!): Int!
+    fullUpdateB2bCategories(items: [B2bCategoriesInput]): [B2bCategory]
+    fullUpdateB2bProducts(items: [B2bProductInput]): [B2bProduct]
+    fullUpdateB2bSettings(items: B2bSettingInput): B2bSettings
+    fullUpdateBanner(item: BannerInput!): Int!
+    fullUpdateModificationSettings(items: ModificationSettingsInput): [ModificationSettings]
+    fullUpdateProductModification(items: ModificationProductInput): ModificationProductType
+    fullUpdateSlider(item: SliderInput!): Int!
+    fullUpdateSocial(item: SocialInput!): Int!
+    markSubscriberStatus: Int!
+    massUpdateB2bCategories(items: B2bMassCategoriesInput): [B2bCategory]
+    massUpdateB2bProducts(items: B2bMassProductInput): [B2bProduct]
+    moveCategory(ids: [Int!]!, toCategoryId: Int!): Int!
+    moveProduct(ids: [Int!]!, toCategoryId: Int!): Int!
+    moveProductB2b(providerId: Int, toCategoryId: Int, vendorCode: [String]): Int!
+    multiplyProductOldPrice(ids: [Int!]!, multiplier: Float!): Int
+    multiplyProductPrice(ids: [Int!]!, multiplier: Float!): Int
+    placeCategoryAfter(afterId: Int!, id: Int!): Boolean!
+    placeCategoryBefore(beforeId: Int!, id: Int!): Boolean!
+    placeFieldOptionAfter(afterId: Int!, id: Int!): Boolean!
+    placeFieldOptionBefore(beforeId: Int!, id: Int!): Boolean!
+    placeGroupFieldAfter(afterId: Int!, groupId: Int!, ids: [Int!]!): Boolean!
+    placeGroupFieldBefore(beforeId: Int!, groupId: Int!, ids: [Int!]!): Boolean!
+    placePageImageAfter(afterId: Int!, id: Int!): Boolean!
+    placePageImageBefore(beforeId: Int!, id: Int!): Boolean!
+    placeProductAfter(afterId: Int!, ids: [Int!]!, inCategoryId: Int!): Boolean!
+    placeProductBefore(beforeId: Int!, ids: [Int!]!, inCategoryId: Int!): Boolean!
+    replaceCategoryDescription(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceCategoryFullDescription(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceCategoryFullName(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceCategoryItemCode(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceCategoryName(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceFullShopByType(items: [ShopByTypeValueInput], productIds: [Int!]!, typeId: Int): Int!
+    replaceProductDescription(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceProductFullDescription(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceProductFullName(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceProductItemCode(ids: [Int!]!, replace: String!, search: String!): Int
+    replaceProductName(ids: [Int!]!, replace: String!, search: String!): Int
+    reviewHelpful(id: Int!): Int!
+    reviewHelpless(id: Int!): Int!
+    roundProductPrice(ids: [Int!]!, rounder: Float!): Int
+    setActiveGeo(active: [Int!]!, deactive: [Int!]!): [CustomGeo]
+    shopReviewHelpful(id: Int!): Int!
+    shopReviewHelpless(id: Int!): Int!
+    updateAllProductUpdatedAt: Int!
+    updateBanner(id: Int!, updater: BannerUpdater!): Int!
+    updateCategory(ids: [Int!]!, updater: CategoryUpdater!): Int!
+    updateDiscountCodes(items: DiscountCodesInput): Int!
+    updateFieldOption(ids: [Int!]!, updater: FieldOptionUpdater!): Int!
+    updateFullCategory(items: [CategoryInput]): Int!
+    updateFullGroup(items: [GroupInput]): Int!
+    updateFullGroupField(items: [GroupFieldInput]): Int!
+    updateFullProduct(items: [ProductInput]): Int!
+    updateGroup(ids: [Int!]!, updater: GroupUpdater!): Int!
+    updateGroupField(ids: [Int!]!, updater: GroupFieldUpdater!): Int!
+    updateImages(images: [ImageUpdater]!): Int!
+    updateOrder(ids: [Int!]!, updater: OrderUpdater!): Int!
+    updatePage(pageIds: [Int!]!, updater: PageUpdater!): Int!
+    updatePageAdditionalInfo(pageIds: [Int!]!, updater: PageAdditionalInfoUpdater!): Int!
+    updatePageGroupFields(fieldValues: FieldValues!, pageIds: [Int!]!): Int!
+    updatePageImage(ids: [Int!]!, updater: PageImageUpdater!): Int!
+    updateProduct(ids: [Int!]!, updater: ProductUpdater!): Int!
+    updateProductTag(items: [ProductTagInput]): Int!
+    updateReview(ids: [Int!]!, updater: ReviewUpdater!): Int!
+    updateShopReview(ids: [Int!]!, updater: ShopReviewUpdater!): Int!
+    updateSlider(id: Int!, updater: SliderUpdater!): Int!
+}
+
+type OnlinerClassification {
+    modelId: Int
+    productId: Int
+    typeId: Int
+}
+
+type Order {
+    comment: String
+    createdAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    currencies: [OrderCurrency]
+    delivery: OrderDelivery
+    discountCodes: [OrderDiscountCodes]
+    id: Int
+    payment: OrderPayment
+    productPrices: [Price]
+    products: [OrderProduct]
+    status: OrderStatus
+    statusId: Int
+    total: [Price]
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    userData: [OrderUserData]
+    userId: Int
+}
+
+type OrderCurrency {
+    bankCode: String
+    course: Float
+    input: Boolean
+    round: Float
+    show: Boolean
+    suffix: String
+}
+
+type OrderDelivery {
+    comment: String
+    cost: [Price]
+    deliveryId: Int
+    description: String
+    name: String
+    sourceId: Int
+}
+
+type OrderDeliveryCalc {
+    comment: String
+    cost: [Price]
+    description: String
+    name: String
+    selected: Boolean
+    sourceId: Int
+}
+
+type OrderDiscountCodes {
+    conditionAccessType: Int
+    conditionAllProducts: Boolean
+    conditionCountFrom: Int
+    conditionDateFrom(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    conditionDateTo(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    conditionPriceFrom: Float
+    conditionProductDiscount: Boolean
+    discount: Float
+    discountCode: String
+    discountType: String
+    discountTypeId: Int
+    id: Int
+    name: String
+    orderId: Int
+    productDiscountPrice: Float
+    productDiscountShowPrice: Float
+    productId: Int
+}
+
+type OrderPayment {
+    comment: String
+    cost: [Price]
+    description: String
+    name: String
+    paymentId: Int
+    sourceId: Int
+    status: String
+}
+
+type OrderPaymentCalc {
+    comment: String
+    cost: [Price]
+    description: String
+    name: String
+    paymentId: Int
+    selected: Boolean
+    sourceId: Int
+}
+
+type OrderProduct {
+    count: Int
+    data: [OrderProductData]
+    deliveryDays: Int
+    discount: Int
+    group: OrderProductGroup
+    icon: String
+    itemCode: String
+    modification: [OrderProductModification]
+    name: String
+    oldPrices: [Price]
+    priceFrom: Boolean
+    prices: [Price]
+    sizeType: String
+    sourceId: Int
+    totalPrices: [Price]
+    url: String
+}
+
+type OrderProductCalc {
+    count: Int
+    deliveryDays: Int
+    discount: Int
+    discountCodePrices: [Price]
+    icon: String
+    itemCode: String
+    name: String
+    oldPrices: [Price]
+    priceFrom: Boolean
+    prices: [Price]
+    sizeType: String
+    sourceId: Int
+    totalPrices: [Price]
+    url: String
+}
+
+type OrderProductData {
+    description: String
+    name: String
+    value: String
+}
+
+type OrderProductGroup {
+    groupId: Int
+    name: String
+}
+
+type OrderProductModification {
+    name: String
+    optionTypeId: Int
+    value: String
+}
+
+type OrderStatus {
+    description: String
+    id: Int
+    name: String
+    status: Int
+}
+
+type OrderUserData {
+    description: String
+    name: String
+    value: String
+}
+
+type Page {
+    additionalInfo: PageAdditionalInfo
+    id: Int
+    images: [PageImage]
+    links: [PageAdditionalInfo]
+    metaTags: [PageMetaTag]
+    robotIndex: Boolean
+    status: Int
+    title: String
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    url: String
+}
+
+type PageAdditionalInfo {
+    group: Group
+    groupId: Int
+    id: Int
+    pageId: Int
+    pageTypeId: Int
+    parentId: Int
+    parentUrl: String
+    position: Int
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+}
+
+type PageImage {
+    icon: String
+    iconDescription: String
+    iconSize: Int
+    iconTitle: String
+    id: Int
+    image: String
+    imageDescription: String
+    imageSize: Int
+    imageTitle: String
+    pageId: Int
+    position: Int
+}
+
+type PageMetaTag {
+    id: Int
+    name: String
+    pageId: Int
+    value: String
+}
+
+type PaymentType {
+    description: String
+    id: Int
+    name: String
+    status: Boolean
+}
+
+type Price {
+    name: String
+    suffix: String
+    value: Float
+}
+
+type PriceCategoryRange {
+    currencyName: String
+    maxPrice: Float
+    minPrice: Float
+}
+
+type Product {
+    additionalInfo: ProductAdditionalInfo
+    category: Category
+    count: Int
+    countable: Boolean
+    deliveryDays: Int
+    discountPercent: Float
+    floatValues: [FloatFieldValue]
+    id: Int
+    images: [PageImage]
+    intValues: [IntFieldValue]
+    isChildMod: Boolean
+    itemCode: String
+    millisecondsOldPriceTo: BigInt
+    modificationCount: Int
+    modificationParentId: Int
+    modificationSettings: [ModificationSettings]
+    modifications: [InnerProduct]
+    name: String
+    oldPrice: Float
+    oldPriceFrom(format: String = "YYYY-MM-dd"): String
+    oldPriceTo(format: String = "YYYY-MM-dd"): String
+    oldPriceToShow: [Price]
+    onlinerClassification: OnlinerClassification
+    orderBefore: Int
+    orderMinCount: Int
+    page: Page
+    pageId: Int
+    price: Float
+    priceFrom: Boolean
+    priceToShow: [Price]
+    providerId: Int
+    relatedCategories: [Category]
+    relatedProducts(onlyAvailable: Boolean = false): [InnerProduct]
+    reviewSummary: ReviewSummary
+    reviews: [Review]
+    selectValues: [SelectFieldValue]
+    shopByClassification: ShopbyClassification
+    shopByTypeValues: [ShopByTypeValue]
+    sizeType: SizeType
+    statusId: Int
+    stringValues: [StringFieldValue]
+    tags: [ProductTag]
+    textValues: [TextFieldValue]
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    vendorCode: String
+    video: ProductVideo
+}
+
+type ProductAdditionalInfo {
+    description: String
+    fullDescription: String
+    fullName: String
+    productId: Int
+}
+
+type ProductKit {
+    description: String
+    id: Int
+    name: String
+    position: Int
+    productIds: [Int!]
+    products: [Product]
+}
+
+type ProductModification {
+    id: Int
+    position: Int
+    productId: Int
+    productModification: Product
+    productModificationId: Int
+}
+
+type ProductTag {
+    backgroundColor: String
+    color: String
+    id: Int
+    name: String
+}
+
+type ProductVideo {
+    code: String!
+    icon: String
+    placement: ProductVideoPlacementEnum!
+}
+
+type Query {
+    calcOrder(order: OrderInputCalc!): CalcOrder
+    countBanner(filter: BannerFilter): Int!
+    countCategory(filter: CategoryFilter): Int!
+    countFieldOption(filter: FieldOptionFilter): Int!
+    countGroup(filter: GroupFilter): Int!
+    countGroupField(filter: GroupFieldFilter): Int!
+    countOnlinerClassification(filter: OnlinerClassificationFilter): Int!
+    countOrder(filter: OrderFilter): Int!
+    countPage(filter: PageFilter): Int!
+    countPageImage(filter: PageImageFilter): Int!
+    countPageMetaTag(filter: PageMetaTagFilter): Int!
+    countProduct(filter: ProductFilter): Int!
+    countRelatedPage(filter: RelatedPageFilter): Int!
+    countReview(filter: ReviewFilter): Int!
+    countReviewSummary(filter: ReviewSummaryFilter): Int!
+    countShopByClassification(filter: ShopbyClassificationFilter): Int!
+    countShopReview(filter: ShopReviewFilter): Int!
+    countSlider(filter: SliderFilter): Int!
+    countSubscriber(filter: SubscriberFilter): Int!
+    filterB2bCategory(filter: B2bCategoryFilter): [B2bCategory]
+    filterB2bProduct(filter: B2bProductFilter): [B2bProduct]
+    filterB2bProductCount(filter: B2bProductFilter): Int!
+    filterB2bSettings(filter: B2bSettingsFilter): [B2bSettings]
+    filterBanner(filter: BannerFilter, first: Int, offset: Int, order: [OrderByInput]): [Banner]
+    filterCategory(filter: CategoryFilter, first: Int, offset: Int, order: [OrderByInput]): [Category]
+    filterCurrency(filter: CurrencyFilter, first: Int, offset: Int, order: [OrderByInput]): [Currency]
+    filterDeliveryType: [DeliveryType]
+    filterDiscountCodes(filter: DiscountCodesFilter, first: Int, offset: Int): [DiscountCodes]
+    filterDiscountCodesCount(filter: DiscountCodesFilter): Int!
+    filterFieldOption(filter: FieldOptionFilter, first: Int, offset: Int, order: [OrderByInput]): [FieldOption]
+    filterGroup(filter: GroupFilter, first: Int, offset: Int, order: [OrderByInput]): [Group]
+    filterGroupField(filter: GroupFieldFilter, first: Int, offset: Int, order: [OrderByInput]): [FieldInterface]
+    filterGroupPurpose: [GroupPurpose]
+    filterModificationProduct(filter: ModificationProductFilter): [ModificationProductVariant]
+    filterModificationSettings(filter: ModificationSettingsFilter): [ModificationSettings]
+    filterModificationSettingsShowType: [ModificationSettingsShowType]
+    filterNewGroupFilledField(pageId: Int!): [FieldInterface]
+    filterOnlinerClassification(filter: OnlinerClassificationFilter, first: Int, offset: Int, order: [OrderByInput]): [OnlinerClassification]
+    filterOrder(filter: OrderFilter, first: Int, offset: Int, order: [OrderByInput]): [Order]
+    filterOrderStatus: [OrderStatus]
+    filterPage(filter: PageFilter, first: Int, offset: Int, order: [OrderByInput]): [Page]
+    filterPageImage(filter: PageImageFilter, first: Int, offset: Int, order: [OrderByInput]): [PageImage]
+    filterPageMetaTag(filter: PageMetaTagFilter, first: Int, offset: Int, order: [OrderByInput]): [PageMetaTag]
+    filterPaymentType: [PaymentType]
+    filterProduct(filter: ProductFilter, first: Int, offset: Int, order: [OrderByInput]): [Product]
+    filterProductTags(filter: ProductTagFilter, first: Int, offset: Int): [ProductTag]
+    filterRelatedPage(filter: RelatedPageFilter, first: Int, offset: Int, order: [OrderByInput]): [RelatedPage]
+    filterReview(filter: ReviewFilter, first: Int, offset: Int, order: [OrderByInput]): [Review]
+    filterReviewSummary(filter: ReviewSummaryFilter, first: Int, offset: Int, order: [OrderByInput]): [ReviewSummary]
+    filterShopByClassification(filter: ShopbyClassificationFilter, first: Int, offset: Int, order: [OrderByInput]): [ShopbyClassification]
+    filterShopByTypeValue(filter: ShopByTypeValueFilter, first: Int, offset: Int, order: [OrderByInput]): [ShopByTypeValue]
+    filterShopReview(filter: ShopReviewFilter, first: Int, offset: Int, order: [OrderByInput]): [ShopReview]
+    filterSizeType: [SizeType]
+    filterSlider(filter: SliderFilter, first: Int, offset: Int, order: [OrderByInput]): [Slider]
+    filterSocial: Social
+    filterSubscriber(filter: SubscriberFilter, first: Int, offset: Int, order: [OrderByInput]): [Subscriber]
+    filterVariable(filter: VariableFilter): [Variable]
+    geoData: [CustomGeo]
+    productList(afterId: Int!, filter: ProductFilter, first: Int!): [Product]
+    productMaxCount: Int!
+}
+
+type RelatedPage {
+    id: Int!
+    pageId: Int!
+    position: Int!
+    relatedPageId: Int!
+}
+
+type Review {
+    accepted: Int
+    comment: String
+    createdAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    email: String!
+    helpful: Int
+    helpless: Int
+    id: Int!
+    mark: Int
+    name: String
+    negative: String
+    pageId: Int
+    positive: String
+    updatedAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    userId: Int
+}
+
+type ReviewSummary {
+    mark: Float!
+    pageId: Int!
+    reviewCount: Int
+}
+
+type SelectFieldValue {
+    fieldId: Int!
+    id: Int!
+    optionId: Int!
+    pageId: Int!
+    selectValue: String
+    type: Int!
+}
+
+type ShopByTypeAttribute {
+    id: Int!
+    typeId: Int!
+}
+
+type ShopByTypeValue {
+    attributeId: Int!
+    dictionaryId: Int!
+    id: Int!
+    productId: Int!
+}
+
+type ShopReview {
+    accepted: Boolean
+    createdAt(format: String = "YYYY-MM-dd HH:mm:ss"): String!
+    email: String
+    helpful: Int!
+    helpless: Int!
+    id: Int!
+    mark: Int!
+    name: String!
+    phone: String
+    reply: String
+    review: String!
+    userId: Int
+}
+
+type ShopbyClassification {
+    modelId: Int
+    productId: Int
+    typeId: Int
+}
+
+type SimilarProduct {
+    id: Int
+    position: Int
+    productId: Int
+    similarProductId: Int
+}
+
+type SingleSelectField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    options: [FieldOption]
+    position: Int!
+    purposeId: Int
+    searchOptions: [FieldOption]
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    usedMod: Boolean!
+    value: SelectFieldValue
+}
+
+type SizeType {
+    id: Int
+    title: String
+}
+
+type Slide {
+    alineText: Int!
+    buttonBgColor: String!
+    buttonBgColorHover: String!
+    buttonBorderColor: String!
+    buttonBorderColorHover: String!
+    buttonBorderRadius: Int!
+    buttonColor: String!
+    buttonColorHover: String!
+    buttonText: String!
+    id: Int
+    link: String!
+    mainImage: String!
+    mainImagePosition: Int!
+    mainImagePositionRelativeTextBlock: Int!
+    overlayBgColor: String!
+    overlayBgImage: String!
+    overlayBgPosition: Int!
+    overlayMethod: Int!
+    position: Int!
+    positionBlockText: Int!
+    sliderId: Int
+    status: Boolean!
+    subtitle: String!
+    subtitleColor: String!
+    title: String!
+    titleColor: String!
+}
+
+type Slider {
+    autoScrollType: Int!
+    bulletActiveColor: String!
+    bulletColor: String!
+    bulletColorHover: String!
+    id: Int!
+    name: String!
+    navigationBgColor: String!
+    navigationBgColorHover: String!
+    navigationColor: String!
+    navigationColorHover: String!
+    slideSwitchType: Int!
+    slides(status: Boolean): [Slide]
+    status: Boolean!
+}
+
+type Social {
+    buttonGroupColor: String
+    buttonGroupColorHover: String
+    icons(status: Boolean): [Icon!]
+    iconsShape: Int!
+    iconsSize: Int!
+    name: String
+    positionGroup: Int!
+    status: Boolean!
+    statusGroup: Int!
+}
+
+type StringField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    position: Int!
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    value: StringFieldValue
+}
+
+type StringFieldValue {
+    fieldId: Int!
+    id: Int!
+    pageId: Int!
+    stringValue: String
+}
+
+type Subscriber {
+    createdAt(format: String = "YYYY-MM-dd HH:mm:ss"): String
+    email: String
+    id: Int
+    name: String
+    status: Int
+}
+
+type TextField implements FieldInterface {
+    displayable: Int!
+    groupId: Int!
+    id: Int!
+    name: String
+    position: Int!
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+    value: TextFieldValue
+}
+
+type TextFieldValue {
+    fieldId: Int!
+    id: Int!
+    pageId: Int!
+    textValue: String
+}
+
+type UserData {
+    description: String
+    name: String
+    value: String
+}
+
+type UserDictionary {
+    description: String
+    id: Int
+    name: String
+    status: Boolean
+}
+
+type Variable {
+    comment: String
+    name: String
+    value: String
+}
+
+type usersFields {
+    id: Int
+    userData: [UserData]
+}
+
+enum BannerType {
+    additional_baner
+    bottom_baner
+    display_text
+    left_baner
+    right_baner
+    top_baner
+}
+
+enum CacheTypeEnum {
+    template
+}
+
+enum Position {
+    down
+    up
+}
+
+enum ProductVideoPlacementEnum {
+    first
+    last
+}
+
+enum ShopByClassificationEnum {
+    any
+    model
+    not
+    type
+}
+
+scalar BigInt
+
+scalar Date
+
+scalar DateTime
+
+input AddCategoryAdditionalInfoInput {
+    description: String
+    filterGroupId: Int
+    fullDescription: String
+    fullName: String
+}
+
+input AddFieldOptionInput {
+    fieldId: Int
+    id: Int
+    position: Int
+    type: Int
+    value: String
+}
+
+input AddFloatFieldValue {
+    fieldId: Int!
+    floatValue: Float!
+    pageId: Int
+}
+
+input AddGroupFieldInput {
+    displayable: Int
+    groupId: Int!
+    id: Int
+    name: String
+    options: [AddFieldOptionInput]
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+}
+
+input AddGroupInput {
+    id: Int
+    name: String
+    typeId: Int!
+}
+
+input AddIntFieldValue {
+    fieldId: Int!
+    intValue: Int!
+    pageId: Int
+}
+
+input AddLinkInput {
+    pageId: Int
+    parentId: Int
+}
+
+input AddProductAdditionalInfoInput {
+    description: String
+    fullDescription: String
+    fullName: String
+    productId: Int
+}
+
+input AddProductKitInput {
+    description: String = ""
+    name: String = ""
+}
+
+input AddProductModificationInput {
+    productId: Int = 0
+    productModificationId: Int = 0
+}
+
+input AddReviewInput {
+    comment: String = ""
+    email: String!
+    mark: Int!
+    name: String!
+    negative: String = ""
+    pageId: Int!
+    positive: String = ""
+    userId: Int = 0
+}
+
+input AddSelectFieldValue {
+    fieldId: Int!
+    optionId: Int!
+    pageId: Int
+}
+
+input AddSimilarProductInput {
+    productId: Int = 0
+    similarProductId: Int = 0
+}
+
+input AddStringFieldValue {
+    fieldId: Int!
+    pageId: Int
+    stringValue: String!
+}
+
+input AddSubscriber {
+    email: String!
+    name: String
+    status: Int
+}
+
+input AddTextFieldValue {
+    fieldId: Int!
+    pageId: Int
+    textValue: String!
+}
+
+input B2bCategoriesInput {
+    added: Int
+    autoimport: Int
+    providerCategoryId: String
+    providerId: Int
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+input B2bCategoryFilter {
+    added: Int
+    autoimport: Int
+    providerCategoryId: String
+    providerId: Int
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+input B2bMarkupInput {
+    id: Int
+    priceFrom: Float
+    providerId: Int
+    type: String
+    value: Float
+}
+
+input B2bMassCategoriesInput {
+    added: Int
+    autoimport: Int
+    providerCategoryId: [String]
+    providerId: Int
+    sync: Int
+}
+
+input B2bMassProductInput {
+    added: Int
+    providerId: Int
+    providerProductIds: [String]
+    sync: Int
+}
+
+input B2bProductFilter {
+    added: Int
+    providerId: Int
+    providerProductIds: [String]
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+input B2bProductInput {
+    added: Int
+    providerId: Int
+    providerProductId: String
+    shopCategoryPageId: Int
+    sync: Int
+}
+
+input B2bSettingInput {
+    allowGroups: Int
+    autoDelete: Int
+    availableCount: Int
+    createGroups: Int
+    markup: [B2bMarkupInput]
+    providerId: Int
+    run: Int
+    status: Int
+    syncDate: DateTime
+    syncFields: String
+}
+
+input B2bSettingsFilter {
+    allowGroups: Int
+    provider: String
+    providerId: Int
+    status: Int
+}
+
+input BannerFilter {
+    active: Boolean
+    ids: [Int!]
+    position: Int
+    type: BannerType
+}
+
+input BannerInput {
+    active: Boolean!
+    content: String!
+    description: String!
+    id: Int
+    outputSource: Int!
+    position: Int!
+    sliderId: Int
+    type: BannerType!
+}
+
+input BannerUpdater {
+    active: Boolean
+    position: Position
+}
+
+input CategoryAdditionalInfoUpdater {
+    description: String
+    filterGroupId: Int
+    fullDescription: String
+    fullName: String
+}
+
+input CategoryFilter {
+    ids: [Int!]
+    ignoreModifications: Boolean
+    itemCode: String
+    name: String
+    onlyDisplayed: Boolean
+    open: Int
+    pageIds: [Int!]
+    parentPageIds: [Int!]
+    showMain: Boolean
+    statusId: Int
+    statusIds: [Int!]
+    statusIdsNotIn: [Int!]
+}
+
+input CategoryInfoInput {
+    categoryId: Int
+    description: String
+    filterGroupId: Int
+    fullDescription: String
+    fullName: String
+}
+
+input CategoryInput {
+    additionalInfo: CategoryInfoInput
+    filterFields: [Int!]
+    floatValues: [FloatValueInput]
+    id: Int
+    images: [ImageInput]
+    intValues: [IntValueInput]
+    itemCode: String
+    name: String
+    open: Int
+    page: PageInput
+    pageId: Int
+    selectValues: [SelectValueInput]
+    showMain: Boolean
+    statusId: Int
+    stringValues: [StringValueInput]
+    textValues: [TextValueInput]
+}
+
+input CategoryUpdater {
+    additionalInfo: CategoryAdditionalInfoUpdater
+    itemCode: String
+    name: String
+    open: Int
+    statusId: Int
+}
+
+input CurrencyFilter {
+    ids: [Int!]
+    idsNotIn: [Int!]
+}
+
+input CustomGeoInsert {
+    active: Int
+    id: Int
+    name: String
+}
+
+input DiscountCodesConditionInput {
+    accesType: Int!
+    allProducts: Boolean
+    countFrom: Int!
+    countUses: Int
+    dateFrom: Date
+    dateTo: Date
+    pageIds: [Int!]
+    priceFrom: Float!
+    productDiscount: Boolean!
+}
+
+input DiscountCodesFilter {
+    code: String
+    countFrom: Int
+    dateFrom: String
+    dateTo: String
+    discount: Float
+    discountFrom: Float
+    discountTo: Float
+    discountType: Int
+    id: Int
+    name: String
+    priceFrom: Float
+    priceTo: Float
+    status: Boolean
+    strictCode: String
+}
+
+input DiscountCodesInput {
+    code: String!
+    comment: String
+    condition: DiscountCodesConditionInput!
+    discount: Float!
+    discountType: Int!
+    id: Int
+    name: String!
+    status: Boolean!
+    uses: Int!
+}
+
+input FieldOptionFilter {
+    fieldIds: [Int!]
+    value: [String!]
+}
+
+input FieldOptionUpdater {
+    value: String
+}
+
+input FieldValues {
+    floatValues: [FloatValueInput]
+    intValues: [IntValueInput]
+    selectValues: [SelectValueInput]
+    stringValues: [StringValueInput]
+    textValues: [TextValueInput]
+}
+
+input FloatFieldValueFilter {
+    fieldId: Int!
+    from: Float
+    to: Float
+}
+
+input FloatValueInput {
+    fieldId: Int!
+    floatValue: Float!
+    pageId: Int
+}
+
+input GroupFieldFilter {
+    displayable: Int
+    groupIds: [Int!]
+    ids: [Int!]
+    idsNotIn: [Int!]
+    name: String
+    names: [String!]
+    purposeIds: [Int!]
+    searchable: Int
+    suffix: String
+    title: String
+    titles: [String!]
+    typeIds: [Int!]
+}
+
+input GroupFieldInput {
+    displayable: Int
+    groupId: Int!
+    id: Int
+    name: String
+    options: [AddFieldOptionInput]
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+    typeId: Int!
+}
+
+input GroupFieldUpdater {
+    displayable: Int
+    name: String
+    purposeId: Int
+    searchable: Int
+    suffix: String
+    title: String
+}
+
+input GroupFilter {
+    ids: [Int!]
+    name: String
+}
+
+input GroupInput {
+    fields: [GroupFieldInput]
+    id: Int
+    name: String
+    typeId: Int!
+}
+
+input GroupUpdater {
+    name: String
+}
+
+input IconFilter {
+    ids: [Int!]
+    position: Int
+    status: Boolean
+}
+
+input IconInput {
+    commonImage: String
+    hint: String
+    imageSelectedOption: Int
+    link: String
+    ownImage: String
+    position: Int!
+    status: Boolean!
+}
+
+input ImageInput {
+    icon: String
+    iconDescription: String
+    iconSize: Int
+    iconTitle: String
+    image: String
+    imageDescription: String
+    imageSize: Int
+    imageTitle: String
+    pageId: Int
+}
+
+input ImageUpdater {
+    Id: Int! = 0
+    icon: String
+    iconDescription: String
+    iconTitle: String
+    image: String
+    imageDescription: String
+    imageTitle: String
+}
+
+input IntFieldValueFilter {
+    fieldId: Int!
+    from: Int
+    to: Int
+}
+
+input IntValueInput {
+    fieldId: Int!
+    intValue: Int!
+    pageId: Int
+}
+
+input LastImportInput {
+    added: Int!
+    deleted: Int!
+    error: String
+    providerId: Int!
+    report: String
+    updated: Int!
+}
+
+input MetaTagInput {
+    name: String!
+    pageId: Int
+    value: String!
+}
+
+input ModificationProductFilter {
+    productId: Int
+}
+
+input ModificationProductInput {
+    modifications: [ModificationProductItemInput]
+    parentId: Int!
+}
+
+input ModificationProductItemInput {
+    modification: [ModificationProductItemModInput]
+    productId: Int!
+}
+
+input ModificationProductItemModInput {
+    fieldId: Int!
+    optionId: Int!
+}
+
+input ModificationSettingsField {
+    fieldId: Int!
+    options: [ModificationSettingsFieldOtions]
+    position: Int
+    showType: Int!
+}
+
+input ModificationSettingsFieldOtions {
+    id: Int!
+}
+
+input ModificationSettingsFilter {
+    productId: Int
+}
+
+input ModificationSettingsInput {
+    fields: [ModificationSettingsField]
+    productId: Int!
+}
+
+input ModificationSettingsShowTypeFilter {
+    id: Int!
+}
+
+input OnlinerClassificationFilter {
+    modelIds: [Int!]
+    productIds: [Int!]
+    typeIds: [Int!]
+}
+
+input OnlinerInput {
+    modelId: Int = 0
+    productId: Int
+    typeId: Int = 0
+}
+
+input OrderByInput {
+    fieldName: String!
+    order: String!
+}
+
+input OrderDeliveryInput {
+    cost: Float = 0.0
+    orderId: Int = 0
+    sourceId: Int = 0
+}
+
+input OrderFilter {
+    comment: String
+    createdAtFrom: String
+    createdAtTo: String
+    ids: [Int!]
+    productName: String
+    statusId: Int
+    userData: String
+    userIds: [Int!]
+}
+
+input OrderInput {
+    comment: String
+    delivery: OrderDeliveryInput!
+    discountCode: String
+    payment: OrderPaymentInput!
+    products: [OrderProductInput]
+    userData: [OrderUserDataInput]
+}
+
+input OrderInputCalc {
+    delivery: OrderDeliveryInput
+    discountCode: String
+    payment: OrderPaymentInput
+    products: [OrderProductInput]
+}
+
+input OrderInputEdit {
+    comment: String
+    delivery: OrderDeliveryInput!
+    discountCode: String
+    id: Int!
+    payment: OrderPaymentInput!
+    products: [OrderProductInput]
+    userData: [OrderUserDataInput]
+}
+
+input OrderPaymentInput {
+    cost: Float = 0.0
+    orderId: Int = 0
+    sourceId: Int = 0
+}
+
+input OrderProductInput {
+    count: Int = 0
+    sourceId: Int = 0
+}
+
+input OrderUpdater {
+    comment: String
+    statusId: Int
+}
+
+input OrderUserDataFilter {
+    names: [String]
+    orderIds: [Int!]
+}
+
+input OrderUserDataInput {
+    description: String
+    name: String!
+    value: String!
+}
+
+input PageAdditionalInfoUpdater {
+    groupId: Int
+}
+
+input PageFilter {
+    pageIds: [Int!]
+    parentIds: [Int!]
+    status: Int
+    url: String
+    urlEqual: String
+}
+
+input PageImageFilter {
+    icon: String
+    iconDescription: String
+    iconTitle: String
+    ids: [Int!]
+    image: String
+    imageDescription: String
+    imageTitle: String
+    pageIds: [Int!]
+}
+
+input PageImageUpdater {
+    icon: String
+    iconDescription: String
+    iconTitle: String
+    image: String
+    imageDescription: String
+    imageTitle: String
+}
+
+input PageInfoInput {
+    groupId: Int
+    pageId: Int
+    parentId: Int
+}
+
+input PageInput {
+    additionalInfo: PageInfoInput
+    id: Int
+    images: [ImageInput]
+    links: [PageInfoInput]
+    metaTags: [MetaTagInput]
+    robotIndex: Boolean
+    status: Int
+    title: String
+    url: String
+}
+
+input PageMetaTagFilter {
+    ids: [Int!]
+    name: String
+    pageIds: [Int!]
+    value: String
+}
+
+input PageUpdater {
+    Status: Int
+    title: String
+    url: String
+}
+
+input ProductFilter {
+    UpdatedAtFrom: DateTime
+    UpdatedAtTo: DateTime
+    countFrom: Int
+    countTo: Int
+    deliveryDays: Int
+    discount: Boolean
+    floatValues: [FloatFieldValueFilter]
+    groupIds: [Int!]
+    ids: [Int!]
+    ignoreDiscountDate: Boolean
+    ignoreLinks: Boolean
+    ignoreModifications: Boolean
+    images: Boolean
+    intValues: [IntFieldValueFilter]
+    itemCode: String
+    name: String
+    oldPriceFrom: Float
+    oldPriceTo: Float
+    orderBefore: Int
+    pageIds: [Int!]
+    parentPageIds: [Int!]
+    priceFrom: Float
+    priceFromShow: Float
+    priceTo: Float
+    priceToShow: Float
+    productTagIds: [Int!]
+    providerId: Int
+    selectBetween: [SelectFieldBetweenFilter]
+    selectValues: [SelectFieldValueFilter]
+    shopByClassification: ShopByClassificationEnum
+    statusId: Int
+    statusIds: [Int!]
+    statusIdsNotIn: [Int!]
+    stringValues: [StringFieldValueFilter]
+    vendorCode: [String]
+}
+
+input ProductInfoInput {
+    description: String
+    fullDescription: String
+    fullName: String
+    productId: Int
+}
+
+input ProductInfoUpdater {
+    description: String
+    fullDescription: String
+    fullName: String
+}
+
+input ProductInput {
+    additionalInfo: ProductInfoInput
+    count: Int
+    countNull: Boolean
+    countable: Boolean
+    deliveryDays: Int
+    floatValues: [FloatValueInput]
+    id: Int
+    images: [ImageInput]
+    intValues: [IntValueInput]
+    itemCode: String
+    name: String
+    oldPrice: Float
+    oldPriceFrom: Date
+    oldPriceTo: Date
+    onlinerClassification: OnlinerInput
+    orderBefore: Int
+    orderMinCount: Int
+    page: PageInput
+    pageId: Int
+    price: Float
+    priceFrom: Boolean
+    productTags: [Int]
+    providerId: Int
+    selectValues: [SelectValueInput]
+    shopByClassification: ShopByInput
+    shopByTypeValues: [ShopByValueInput]
+    sizeType: Int
+    statusId: Int
+    stringValues: [StringValueInput]
+    textValues: [TextValueInput]
+    vendorCode: String
+    video: ProductVideoInput
+}
+
+input ProductKitFilter {
+    description: String
+    ids: [Int!]
+    name: String
+    productIds: [Int!]
+}
+
+input ProductModificationFilter {
+    productIds: [Int!]
+    productModificationIds: [Int!]
+}
+
+input ProductTagAddInput {
+    backgroundColor: String!
+    color: String!
+    name: String!
+}
+
+input ProductTagFilter {
+    ids: [Int!]
+}
+
+input ProductTagInput {
+    backgroundColor: String
+    color: String
+    id: Int!
+    name: String
+}
+
+input ProductUpdater {
+    additionalInfo: ProductInfoUpdater
+    count: Int
+    countNull: Boolean
+    deliveryDays: Int
+    itemCode: String
+    name: String
+    oldPrice: Float
+    orderMinCount: Int
+    price: Float
+    productTags: [Int]
+    providerId: Int
+    statusId: Int
+    vendorCode: String
+}
+
+input ProductVideoInput {
+    code: String
+    icon: String
+    placement: ProductVideoPlacementEnum
+}
+
+input RelatedInput {
+    id: Int = 0
+    pageId: Int = 0
+    relatedPageId: Int = 0
+}
+
+input RelatedPageFilter {
+    isCategory: Boolean
+    isProduct: Boolean
+    pageIds: [Int!]
+    relatedPageIds: [Int!]
+}
+
+input ReviewFilter {
+    Comment: String
+    Negative: String
+    Positive: String
+    accepted: Int
+    email: String
+    ids: [Int!]
+    name: String
+    pageIds: [Int!]
+    userIds: [Int!]
+}
+
+input ReviewSummaryFilter {
+    ids: [Int!]
+    pageIds: [Int!]
+}
+
+input ReviewUpdater {
+    accepted: Int
+}
+
+input SelectFieldBetweenFilter {
+    fieldId: Int!
+    from: Float
+    to: Float
+}
+
+input SelectFieldValueFilter {
+    fieldId: Int!
+    optionIds: [Int!]!
+}
+
+input SelectValueInput {
+    fieldId: Int!
+    optionId: Int!
+    pageId: Int
+}
+
+input ShopByInput {
+    modelId: Int = 0
+    productId: Int
+    typeId: Int = 0
+}
+
+input ShopByTypeValueFilter {
+    attributeIds: [Int!]
+    dictionaryIds: [Int!]
+    productIds: [Int!]
+}
+
+input ShopByTypeValueInput {
+    attributeId: Int!
+    dictionaryId: Int!
+    productId: Int
+}
+
+input ShopByValueInput {
+    attributeId: Int!
+    dictionaryId: Int!
+    productId: Int
+}
+
+input ShopReviewFilter {
+    accepted: Boolean
+    acceptedNull: Boolean
+    email: String
+    ids: [Int!]
+    name: String
+    phone: String
+    review: String
+    userIds: [Int!]
+}
+
+input ShopReviewInput {
+    email: String
+    mark: Int!
+    name: String!
+    phone: String
+    review: String!
+    userId: Int
+}
+
+input ShopReviewUpdater {
+    accepted: Boolean
+    reply: String
+}
+
+input ShopbyClassificationFilter {
+    modelIds: [Int!]
+    productIds: [Int!]
+    typeIds: [Int!]
+}
+
+input ShopbyClassificationInput {
+    modelId: Int = 0
+    productId: Int
+    typeId: Int = 0
+}
+
+input SimilarProductFilter {
+    productIds: [Int!]
+    similarProductIds: [Int!]
+}
+
+input SlideInput {
+    alineText: Int!
+    buttonBgColor: String!
+    buttonBgColorHover: String!
+    buttonBorderColor: String!
+    buttonBorderColorHover: String!
+    buttonBorderRadius: Int!
+    buttonColor: String!
+    buttonColorHover: String!
+    buttonText: String!
+    id: Int
+    link: String!
+    mainImage: String!
+    mainImagePosition: Int!
+    mainImagePositionRelativeTextBlock: Int!
+    overlayBgColor: String!
+    overlayBgImage: String!
+    overlayBgPosition: Int!
+    overlayMethod: Int!
+    position: Int!
+    positionBlockText: Int!
+    sliderId: Int
+    status: Boolean!
+    subtitle: String!
+    subtitleColor: String!
+    title: String!
+    titleColor: String!
+}
+
+input SliderFilter {
+    ids: [Int!]
+    name: String
+    status: Boolean
+}
+
+input SliderInput {
+    autoScrollType: Int!
+    bulletActiveColor: String!
+    bulletColor: String!
+    bulletColorHover: String!
+    id: Int
+    name: String!
+    navigationBgColor: String!
+    navigationBgColorHover: String!
+    navigationColor: String!
+    navigationColorHover: String!
+    slideSwitchType: Int!
+    slides: [SlideInput]
+    status: Boolean!
+}
+
+input SliderUpdater {
+    status: Boolean!
+}
+
+input SocialInput {
+    buttonGroupColor: String
+    buttonGroupColorHover: String
+    icons: [IconInput!]
+    iconsShape: Int!
+    iconsSize: Int!
+    name: String
+    positionGroup: Int!
+    status: Boolean!
+    statusGroup: Int!
+}
+
+input StringFieldValueFilter {
+    fieldId: Int!
+    value: String!
+}
+
+input StringValueInput {
+    fieldId: Int!
+    pageId: Int
+    stringValue: String!
+}
+
+input SubscriberFilter {
+    createdAtFrom: String
+    createdAtTo: String
+    email: String
+    ids: [Int!]
+    name: String
+    status: Int
+}
+
+input TextValueInput {
+    fieldId: Int!
+    pageId: Int
+    textValue: String!
+}
+
+input UpdateProductKitInput {
+    description: String = ""
+    id: Int = 0
+    name: String = ""
+}
+
+input UserFilter {
+    id: Int = 0
+    ids: [Int] = [0]
+}
+
+input VariableFilter {
+    name: String
+    names: [String!]
+}

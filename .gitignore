@@ -1,0 +1,41 @@
+# .gitignore для BeSeller YML Exporter
+
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.html
+
+# Go workspace file
+go.work
+
+# Environment variables
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Output files
+*.yml
+*.xml
+export*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

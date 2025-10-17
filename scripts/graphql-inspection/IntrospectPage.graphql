@@ -1,0 +1,12 @@
+query IntrospectPage {
+    __type(name: "Page") {
+        fields {
+            name
+            type {
+                kind
+                name
+                ofType { kind name }
+            }
+        }
+    }
+}
