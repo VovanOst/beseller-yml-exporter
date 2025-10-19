@@ -34,6 +34,7 @@ graphql.config.yml
 *.yml
 *.xml
 export*
+!exporter
 
 # OS
 .DS_Store
