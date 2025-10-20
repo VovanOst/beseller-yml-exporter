@@ -33,7 +33,6 @@ graphql.config.yml
 # Output files
 *.yml
 *.xml
-export*
 !exporter
 
 # OS
